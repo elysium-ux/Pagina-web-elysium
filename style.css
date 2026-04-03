@@ -727,6 +727,21 @@ nav .container {
     -webkit-text-fill-color: transparent;
 }
 
+/* Footer V4 */
+.site-footer {
+    padding: 100px 0;
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    position: relative;
+}
+
+.footer-copyright {
+    margin-top: 100px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 40px;
+}
+
 /* Footer Arc Halo - versión azul eléctrico */
 .footer-arc-wrapper {
     position: absolute;
@@ -880,6 +895,19 @@ nav .container {
         font-size: 0.8rem;
         width: 90%;
         max-width: 320px;
+    }
+
+    .site-footer {
+        padding: 60px 0 20px 0; /* Reduced bottom padding */
+    }
+
+    .footer-copyright {
+        margin-top: 50px;
+        padding-top: 30px;
+    }
+
+    .footer-arc {
+        top: 500px; /* Pull arc up slightly on mobile */
     }
 }
 
