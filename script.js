@@ -134,6 +134,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 4. Mobile Navigation Toggle
+    const navToggle = document.querySelector('#nav-toggle');
+    const navMenu = document.querySelector('#nav-menu');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Prevent scrolling when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
+
     window.addEventListener('mousemove', handleInteractions);
     window.addEventListener('scroll', handleInteractions);
     handleInteractions(); // Initial call
