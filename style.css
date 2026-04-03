@@ -97,9 +97,10 @@ section {
     background: #000;
     color: #fff;
     padding: 22px 60px;
-    border-radius: 50px; /* Modern pill shape */
-    border: 2px solid var(--primary-blue);
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+    border-radius: 50px;
+    /* Modern pill shape */
+    border: 2px solid #1863aa;
+    box-shadow: 0 0 20px rgba(24, 87, 170, 0.3);
     font-size: 0.9rem;
 }
 
@@ -110,20 +111,20 @@ section {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(0, 242, 255, 0.2),
-        transparent
-    );
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(24, 87, 170, 0.4),
+            transparent);
     transition: all 0.6s ease;
 }
 
 .btn-premium-cta:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 242, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(24, 87, 170, 0.6);
     background: #000;
-    color: var(--primary-blue);
+    color: #fff;
+    border-color: #3b82f6;
+    /* Slightly lighter on hover */
 }
 
 .btn-premium-cta:hover::before {
@@ -872,6 +873,13 @@ nav .container {
 
     .container {
         padding: 0 20px;
+    }
+
+    .btn-premium-cta {
+        padding: 18px 40px;
+        font-size: 0.8rem;
+        width: 90%;
+        max-width: 320px;
     }
 }
 
