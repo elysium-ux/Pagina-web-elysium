@@ -25,8 +25,6 @@ body {
     color: #fff;
     line-height: 1.6;
     overflow-x: hidden;
-    width: 100%;
-    position: relative;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -738,19 +736,13 @@ nav .container {
 
     /* Hero Responsive */
     .hero-v3-text {
-        font-size: clamp(2.5rem, 11vw, 5.5rem);
-        letter-spacing: -1px;
-    }
-
-    .logo-nav img {
-        left: 0;
-        height: 140px;
+        font-size: 15vw;
+        letter-spacing: -2px;
     }
 
     .sphere-v3 {
-        width: 80vw;
-        height: 80vw;
-        max-width: 500px;
+        width: 600px;
+        height: 600px;
         opacity: 0.6;
     }
 
@@ -761,7 +753,7 @@ nav .container {
         text-align: center;
         width: 100%;
         padding: 0 20px;
-        bottom: 40px;
+        bottom: 60px;
         font-size: 0.7rem;
     }
 
@@ -773,19 +765,18 @@ nav .container {
 
     /* Carousel Responsive */
     .soluciones-card {
-        width: 260px;
-        min-width: 260px;
-        height: 150px;
-        padding: 25px 15px;
+        width: 280px;
+        min-width: 280px;
+        height: 160px;
+        padding: 30px 20px;
     }
 
     .soluciones-title {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 
     section {
         padding: 60px 0;
-        overflow-x: hidden;
     }
 
     .container {
@@ -795,27 +786,19 @@ nav .container {
 
 @media (max-width: 768px) {
     .hero-v3-text {
-        font-size: clamp(2rem, 13vw, 4.5rem);
+        font-size: 18vw;
     }
     
-    .logo-nav img {
-        height: 110px;
-    }
-
     .sphere-v3 {
-        width: 90vw;
-        height: 90vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-v3-text {
-        font-size: 10.5vw; /* Precision for 'EMPRESARIAL' */
-        line-height: 1.2;
+        width: 450px;
+        height: 450px;
     }
 
-    .logo-nav img {
-        height: 95px;
-        left: -5px;
+    .quote-futuristic {
+        font-size: 1.5rem;
+    }
+
+    .quote-futuristic::before {
+        left: -30px;
     }
 }
