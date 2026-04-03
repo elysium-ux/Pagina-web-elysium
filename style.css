@@ -109,7 +109,7 @@ nav .container {
     width: auto;
     max-width: none;
     top: 80%;
-    left: -60px;
+    left: -20px;
     transform: translateY(-50%);
     filter: brightness(1.2);
     z-index: 1001;
