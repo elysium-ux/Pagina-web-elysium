@@ -13,22 +13,10 @@
     --transition-quick: all 0.1s linear;
 }
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Account for fixed nav */
-}
-
-html,
-body {
-    overflow-x: hidden;
-    width: 100%;
+* {
     margin: 0;
     padding: 0;
-}
-
-/* Scroll lock utility - only applied when menu is open */
-.no-scroll {
-    overflow: hidden !important;
+    box-sizing: border-box;
 }
 
 body {
@@ -36,6 +24,7 @@ body {
     font-family: 'Montserrat', sans-serif !important;
     color: #fff;
     line-height: 1.6;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -69,81 +58,6 @@ section {
     transition: var(--transition-smooth);
 }
 
-/* Button & CTA System */
-.btn {
-    display: inline-block;
-    padding: 15px 40px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    border: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-gold {
-    background: #000;
-    color: #fff;
-    border: 1px solid var(--primary-gold);
-}
-
-.btn-gold:hover {
-    background: var(--primary-gold);
-    color: #000;
-    box-shadow: 0 0 20px rgba(224, 200, 156, 0.4);
-}
-
-.btn-premium-cta {
-    background: #000;
-    color: #fff;
-    padding: 22px 60px;
-    border-radius: 50px;
-    /* Modern pill shape */
-    border: 2px solid #1863aa;
-    box-shadow: 0 0 20px rgba(24, 87, 170, 0.3);
-    font-size: 0.9rem;
-}
-
-.btn-premium-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg,
-            transparent,
-            rgba(24, 87, 170, 0.4),
-            transparent);
-    transition: all 0.6s ease;
-}
-
-.btn-premium-cta:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(24, 87, 170, 0.6);
-    background: #000;
-    color: #fff;
-    border-color: #3b82f6;
-    /* Slightly lighter on hover */
-}
-
-.btn-premium-cta:hover::before {
-    left: 100%;
-}
-
-.btn-premium-cta i {
-    margin-left: 15px;
-    transition: transform 0.3s ease;
-}
-
-.btn-premium-cta:hover i {
-    transform: translateX(5px);
-}
-
 .glow-border:hover {
     border-color: var(--primary-blue);
     box-shadow: var(--glow-cian);
@@ -166,23 +80,6 @@ nav .container {
     align-items: center;
 }
 
-/* Nav Toggle (Mobile Hamburger) */
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.nav-toggle span {
-    width: 30px;
-    height: 2px;
-    background-color: var(--primary-blue);
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
-}
-
 .logo-nav {
     position: relative;
     min-width: 220px;
@@ -195,7 +92,7 @@ nav .container {
     width: auto;
     max-width: none;
     top: 80%;
-    left: -20px;
+    left: -60px;
     transform: translateY(-50%);
     filter: brightness(1.2);
     z-index: 1001;
@@ -216,7 +113,6 @@ nav .container {
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: color 0.3s;
-    touch-action: manipulation;
 }
 
 .nav-links a:hover {
@@ -732,21 +628,6 @@ nav .container {
     -webkit-text-fill-color: transparent;
 }
 
-/* Footer V4 */
-.site-footer {
-    padding: 100px 0;
-    background: #000;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    text-align: center;
-    position: relative;
-}
-
-.footer-copyright {
-    margin-top: 100px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 40px;
-}
-
 /* Footer Arc Halo - versión azul eléctrico */
 .footer-arc-wrapper {
     position: absolute;
@@ -800,62 +681,15 @@ nav .container {
 
 /* Mobile adjustments */
 @media (max-width: 991px) {
-    .nav-toggle {
-        display: flex;
+
+    .philosophy-grid,
+    .comp-matrix-v4,
+    .pilares-grid {
+        grid-template-columns: 1fr !important;
     }
 
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 1000;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    /* Animation for Hamburger Menu */
-    .nav-toggle.active span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .nav-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .nav-toggle.active span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* Hero Responsive */
     .hero-v3-text {
-        font-size: 10vw; /* Further reduced to ensure 9-letter words fit */
-        letter-spacing: -1px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-v3-text .text-filled {
-        font-size: 8vw; /* Further reduced for 'EMPRESARIAL' (11 letters) */
-        margin: 5px 0;
-    }
-
-    .sphere-v3 {
-        width: 600px;
-        height: 600px;
-        opacity: 0.6;
+        font-size: 6rem;
     }
 
     .hero-v3-sub {
@@ -865,72 +699,5 @@ nav .container {
         text-align: center;
         width: 100%;
         padding: 0 20px;
-        bottom: 60px;
-        font-size: 0.7rem;
-    }
-
-    .philosophy-grid,
-    .comp-matrix-v4,
-    .pilares-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    /* Carousel Responsive */
-    .soluciones-card {
-        width: 280px;
-        min-width: 280px;
-        height: 160px;
-        padding: 30px 20px;
-    }
-
-    .soluciones-title {
-        font-size: 1rem;
-    }
-
-    section {
-        padding: 60px 0;
-    }
-
-    .container {
-        padding: 0 20px;
-    }
-
-    .btn-premium-cta {
-        padding: 18px 40px;
-        font-size: 0.8rem;
-        width: 90%;
-        max-width: 320px; /* Fixed typo from max-content */
-    }
-
-    .site-footer {
-        padding: 60px 0 20px 0; /* Reduced bottom padding */
-    }
-
-    .footer-copyright {
-        margin-top: 50px;
-        padding-top: 30px;
-    }
-
-    .footer-arc {
-        top: 500px; /* Pull arc up slightly on mobile */
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-v3-text {
-        font-size: 18vw;
-    }
-
-    .sphere-v3 {
-        width: 450px;
-        height: 450px;
-    }
-
-    .quote-futuristic {
-        font-size: 1.5rem;
-    }
-
-    .quote-futuristic::before {
-        left: -30px;
     }
 }
