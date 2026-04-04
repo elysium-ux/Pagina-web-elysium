@@ -765,8 +765,8 @@ nav .container {
     }
 
     .hero-v3-text {
-        font-size: 6rem;
-        /* Antes 6rem */
+        font-size: 4.5rem;
+        /* Reducido para ajuste en pantallas móviles */
     }
 
     .hero-v3-text .text-filled {
