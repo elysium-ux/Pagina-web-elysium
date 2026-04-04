@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 cards.forEach(card => card.classList.remove('active'));
             }
         });
-    }, { 
+    }, {
         threshold: 0.2,
-        rootMargin: "-100px 0px -100px 0px" 
+        rootMargin: "-100px 0px -100px 0px"
     });
 
     const methodologyGrid = document.querySelector('.pilares-grid-observer');
@@ -65,12 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Smooth Scroll for Navigation Links
     document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             if (this.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
@@ -90,15 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleInteractions(e) {
         const scrolled = window.scrollY;
-        
+
         // Mouse Interaction (Global Parallax)
         if (e && e.type === 'mousemove') {
             const { clientX, clientY } = e;
             const { innerWidth, innerHeight } = window;
-            
+
             const moveX = (clientX - innerWidth / 2) / 30;
             const moveY = (clientY - innerHeight / 2) / 30;
-            
+
             // Hero Elements
             if (sphere) {
                 sphere.style.transform = `translate(${moveX * -1.2}px, ${moveY * -1.2}px) rotate(${moveX * 0.05}deg)`;
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (interactiveText) {
                 interactiveText.style.transform = `translate(${moveX}px, ${moveY}px) rotateX(${moveY * 0.05}deg) rotateY(${moveX * 0.05}deg)`;
             }
-            
+
             // Global Glass Cards Parallax
             glassCards.forEach(card => {
                 const rect = card.getBoundingClientRect();
@@ -115,10 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-        
+
         // Scroll Interaction (Ring Rotation & Nav)
         if (scrollRing) {
-            scrollRing.style.transform = `rotate(${scrolled * 0.2}deg) scale(${1 + Math.min(scrolled/5000, 0.2)})`;
+            scrollRing.style.transform = `rotate(${scrolled * 0.2}deg) scale(${1 + Math.min(scrolled / 5000, 0.2)})`;
         }
 
         if (nav) {
@@ -133,36 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
-    // 4. Mobile Navigation Toggle
-    const navToggle = document.querySelector('#nav-toggle');
-    const navMenu = document.querySelector('#nav-menu');
-    const navItems = document.querySelectorAll('.nav-links a');
-
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            
-            // Toggle scroll lock class on body
-            document.body.classList.toggle('no-scroll');
-        });
-
-        // Close menu when a link is clicked
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                // Remove lock first to allow browser to scroll to anchor
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            });
-        });
-    }
-
-    // Ensure scroll is NEVER locked on initial load
-    window.addEventListener('load', () => {
-        document.body.classList.remove('no-scroll');
-    });
 
     window.addEventListener('mousemove', handleInteractions);
     window.addEventListener('scroll', handleInteractions);
