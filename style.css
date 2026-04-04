@@ -63,6 +63,25 @@ section {
     box-shadow: var(--glow-cian);
 }
 
+/* Temporary Version Bubble */
+.version-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 9999;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
 /* Navigation */
 nav {
     position: fixed;
