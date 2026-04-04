@@ -13,10 +13,9 @@
     --transition-quick: all 0.1s linear;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed nav */
 }
 
 html,
@@ -25,6 +24,13 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
+    touch-action: manipulation; /* Prevents some unwanted mobile zoom/delays */
+}
+
+/* Scroll lock utility */
+.no-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
 }
 
 body {
@@ -212,6 +218,7 @@ nav .container {
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: color 0.3s;
+    touch-action: manipulation;
 }
 
 .nav-links a:hover {

@@ -144,23 +144,25 @@ document.addEventListener('DOMContentLoaded', () => {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
             
-            // Prevent scrolling when menu is open
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            // Toggle scroll lock class on body
+            document.body.classList.toggle('no-scroll');
         });
 
         // Close menu when a link is clicked
         navItems.forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (e) => {
+                // Remove lock first to allow browser to scroll to anchor
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
+                document.body.classList.remove('no-scroll');
             });
         });
     }
+
+    // Ensure scroll is NEVER locked on initial load
+    window.addEventListener('load', () => {
+        document.body.classList.remove('no-scroll');
+    });
 
     window.addEventListener('mousemove', handleInteractions);
     window.addEventListener('scroll', handleInteractions);
