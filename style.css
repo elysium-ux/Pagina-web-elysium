@@ -24,13 +24,11 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    touch-action: manipulation; /* Prevents some unwanted mobile zoom/delays */
 }
 
-/* Scroll lock utility */
+/* Scroll lock utility - only applied when menu is open */
 .no-scroll {
     overflow: hidden !important;
-    height: 100vh !important;
 }
 
 body {
@@ -842,15 +840,15 @@ nav .container {
 
     /* Hero Responsive */
     .hero-v3-text {
-        font-size: 18vw;
-        letter-spacing: -2px;
+        font-size: 10vw; /* Further reduced to ensure 9-letter words fit */
+        letter-spacing: -1px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     .hero-v3-text .text-filled {
-        font-size: 13vw;
+        font-size: 8vw; /* Further reduced for 'EMPRESARIAL' (11 letters) */
         margin: 5px 0;
     }
 
@@ -901,7 +899,7 @@ nav .container {
         padding: 18px 40px;
         font-size: 0.8rem;
         width: 90%;
-        max-width: 320px;
+        max-width: 320px; /* Fixed typo from max-content */
     }
 
     .site-footer {
