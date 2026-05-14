@@ -35,7 +35,7 @@
     <meta property="twitter:description" content="Transformamos negocios en sistemas autónomos de alta eficiencia.">
     <meta property="twitter:image" content="assets/logo/Logo 3.0 sin fondo/5.png">
 
-    <link rel="stylesheet" href="style.css?v=1.5">
+    <link rel="stylesheet" href="style.css?v=1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 
@@ -89,7 +89,7 @@
 
 <body>
     <!-- Temporary Version Bubble -->
-    <div class="version-bubble">v1.5</div>
+    <div class="version-bubble">v1.3</div>
 
     <header>
         <nav id="main-nav">
@@ -255,168 +255,195 @@
                     </div>
                 </div>
                 <div style="margin-top: 40px; text-align: center;">
-                <a href="javascript:void(0)" class="btn-test-scalability reveal" onclick="openTest()">
-                    <span class="btn-glow"></span>
-                    <span class="btn-content">
-                        ¿TU EMPRESA ES ESCALABLE? <br>
-                        <small>Realiza el Diagnóstico de 2 min</small>
-                    </span>
-                    <i class="fas fa-microchip"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal del Test -->
-    <div id="test-modal" class="test-modal">
-        <div class="test-modal-content glass-card">
-            <span class="close-modal" onclick="closeTest()">&times;</span>
-            
-            <div id="test-steps">
-                <!-- Introducción -->
-                <div class="test-step active" id="step-0">
-                    <h2 class="gold-gradient">Diagnóstico de Ingeniería Empresarial</h2>
-                    <p>Descubre el nivel de madurez operativa de tu negocio y qué pasos necesitas para alcanzar la libertad total.</p>
-                    <button class="btn-cta-futuristic" onclick="nextStep(1)">Comenzar Diagnóstico</button>
-                </div>
-
-                <!-- Pregunta 1 -->
-                <div class="test-step" id="step-1">
-                    <span class="step-counter">01 / 10</span>
-                    <h3>¿Qué porcentaje de tu tiempo dedicas a tareas que otra persona podría hacer?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 1, 'Más del 80% (Hombre Orquesta)')">Más del 80% (Soy el "hombre orquesta")</button>
-                        <button onclick="saveAnswer(2, 1, 'Cerca del 50%')">Cerca del 50%</button>
-                        <button onclick="saveAnswer(4, 1, 'Menos del 20% (Estratégico)')">Menos del 20% (Me enfoco en estrategia)</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 2 -->
-                <div class="test-step" id="step-2">
-                    <span class="step-counter">02 / 10</span>
-                    <h3>Si hoy te ausentas 30 días del negocio sin comunicación...</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 2, 'Colapso total')">La empresa deja de operar o colapsa</button>
-                        <button onclick="saveAnswer(2, 2, 'Funciona con errores')">Funciona pero con graves errores</button>
-                        <button onclick="saveAnswer(4, 2, 'Sigue creciendo')">Sigue creciendo y operando normalmente</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 3 -->
-                <div class="test-step" id="step-3">
-                    <span class="step-counter">03 / 10</span>
-                    <h3>¿Cuentas con manuales de procesos documentados y actualizados?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 3, 'Sin documentación')">No, todo depende de mi memoria</button>
-                        <button onclick="saveAnswer(2, 3, 'Documentación parcial/obsoleta')">Existen algunos pero nadie los usa</button>
-                        <button onclick="saveAnswer(4, 3, 'Documentación total')">Sí, son la base de nuestra operación diaria</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 4 -->
-                <div class="test-step" id="step-4">
-                    <span class="step-counter">04 / 10</span>
-                    <h3>¿Cómo obtienes el 80% de tus nuevos clientes?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 4, 'Recomendaciones (Azar)')">Recomendaciones y "boca en boca" (Azar)</button>
-                        <button onclick="saveAnswer(2, 4, 'Venta manual constante')">Esfuerzos de ventas manuales constantes</button>
-                        <button onclick="saveAnswer(4, 4, 'Sistema predecible')">Sistema de marketing y ventas predecible</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 5 -->
-                <div class="test-step" id="step-5">
-                    <span class="step-counter">05 / 10</span>
-                    <h3>¿Tu equipo tiene autoridad para decidir sin consultarte?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 5, 'Sin autoridad')">No, hasta lo más mínimo requiere mi firma</button>
-                        <button onclick="saveAnswer(2, 5, 'Autoridad limitada')">Solo en áreas muy específicas</button>
-                        <button onclick="saveAnswer(4, 5, 'Empoderamiento total')">Sí, están empoderados bajo procesos claros</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 6 -->
-                <div class="test-step" id="step-6">
-                    <span class="step-counter">06 / 10</span>
-                    <h3>¿Conoces tu Costo de Adquisición (CAC) y Margen Real por producto?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 6, 'Desconocimiento financiero')">No tengo idea de los números exactos</button>
-                        <button onclick="saveAnswer(2, 6, 'Noción aproximada')">Tengo una noción general aproximada</button>
-                        <button onclick="saveAnswer(4, 6, 'Control total de KPIs')">Lo mido y analizo semanalmente con datos</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 7 -->
-                <div class="test-step" id="step-7">
-                    <span class="step-counter">07 / 10</span>
-                    <h3>¿Tus herramientas tecnológicas (CRM, ERP, etc.) están integradas?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 7, 'Excels/Papel')">Usamos Excels aislados y papel</button>
-                        <button onclick="saveAnswer(2, 7, 'Software fragmentado')">Tenemos software pero no se hablan entre sí</button>
-                        <button onclick="saveAnswer(4, 7, 'Sistema integrado')">Todo fluye en un sistema centralizado</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 8 -->
-                <div class="test-step" id="step-8">
-                    <span class="step-counter">08 / 10</span>
-                    <h3>¿El equipo conoce sus indicadores clave de desempeño (KPIs)?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 8, 'Sin KPIs')">No, solo vienen a cumplir su horario</button>
-                        <button onclick="saveAnswer(2, 8, 'KPIs conocidos no medidos')">Los conocen pero no se mien formalmente</button>
-                        <button onclick="saveAnswer(4, 8, 'Cultura de resultados')">Sí, y sus bonos dependen de resultados</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 9 -->
-                <div class="test-step" id="step-9">
-                    <span class="step-counter">09 / 10</span>
-                    <h3>¿Puedes duplicar tu cantidad de clientes hoy sin colapsar?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 9, 'Al límite/Sin capacidad')">Imposible, ya estamos al límite</button>
-                        <button onclick="saveAnswer(2, 9, 'Caos en crecimiento')">Podría, pero con mucho caos y estrés</button>
-                        <button onclick="saveAnswer(4, 9, 'Estructura escalable')">Sí, nuestra estructura está lista para escalar</button>
-                    </div>
-                </div>
-
-                <!-- Pregunta 10 -->
-                <div class="test-step" id="step-10">
-                    <span class="step-counter">10 / 10</span>
-                    <h3>¿Tu empresa es un activo vendible o depende de tu marca personal?</h3>
-                    <div class="test-options">
-                        <button onclick="saveAnswer(0, 10, 'Auto-empleo')">Si yo me voy, el valor de la empresa es cero</button>
-                        <button onclick="saveAnswer(2, 10, 'Dependencia parcial')">Tiene valor pero yo soy la cara principal</button>
-                        <button onclick="saveAnswer(4, 10, 'Activo escalable/vendible')">Es un sistema que funciona solo, listo para venderse</button>
-                    </div>
-                </div>
-
-                <!-- Captación de Datos -->
-                <div class="test-step" id="step-11">
-                    <h2 class="gold-gradient">Diagnóstico de Ingeniería Finalizado</h2>
-                    <p>Estamos calculando tu <strong>Índice de Escalabilidad</strong>. Introduce tus datos para enviarte el reporte completo y tus siguientes 3 pasos estratégicos.</p>
-                    <form id="lead-form" onsubmit="finishTest(event)">
-                        <input type="text" placeholder="Tu nombre y apellido" required maxlength="50" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" title="Solo se permiten letras y espacios">
-                        <input type="email" placeholder="Email corporativo (donde recibirás el reporte)" required maxlength="50">
-                        <button type="submit" class="btn-cta-futuristic">Ver mi Puntaje Ahora</button>
-                    </form>
-                </div>
-
-                <!-- Resultado Final -->
-                <div class="test-step" id="step-12">
-                    <div class="result-circle" id="result-score">0%</div>
-                    <h3 id="result-title">Nivel: Operativo</h3>
-                    <p id="result-desc" style="font-size: 1.1rem; margin-bottom: 30px;">Cargando diagnóstico...</p>
-                    <a href="https://wa.me/522203215455" id="whatsapp-btn" class="btn-cta-futuristic" target="_blank" style="text-decoration: none; display: inline-block;">
-                        PROGRAMA TU CONSULTORÍA GRATIS <i class="fab fa-whatsapp"></i>
+                    <a href="javascript:void(0)" class="btn-test-scalability reveal" onclick="openTest()">
+                        <span class="btn-glow"></span>
+                        <span class="btn-content">
+                            ¿TU EMPRESA ES ESCALABLE? <br>
+                            <small>Realiza el Diagnóstico de 2 min</small>
+                        </span>
+                        <i class="fas fa-microchip"></i>
                     </a>
                 </div>
             </div>
+        </section>
 
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="test-progress"></div>
+        <!-- Modal del Test -->
+        <div id="test-modal" class="test-modal">
+            <div class="test-modal-content glass-card">
+                <span class="close-modal" onclick="closeTest()">&times;</span>
+
+                <div id="test-steps">
+                    <!-- Introducción -->
+                    <div class="test-step active" id="step-0">
+                        <h2 class="gold-gradient">Diagnóstico de Ingeniería Empresarial</h2>
+                        <p>Descubre el nivel de madurez operativa de tu negocio y qué pasos necesitas para alcanzar la
+                            libertad total.</p>
+                        <button class="btn-cta-futuristic" onclick="nextStep(1)">Comenzar Diagnóstico</button>
+                    </div>
+
+                    <!-- Pregunta 1 -->
+                    <div class="test-step" id="step-1">
+                        <span class="step-counter">01 / 10</span>
+                        <h3>¿Qué porcentaje de tu tiempo dedicas a tareas que otra persona podría hacer?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 1, 'Más del 80% (Hombre Orquesta)')">Más del 80% (Soy el
+                                "hombre orquesta")</button>
+                            <button onclick="saveAnswer(2, 1, 'Cerca del 50%')">Cerca del 50%</button>
+                            <button onclick="saveAnswer(4, 1, 'Menos del 20% (Estratégico)')">Menos del 20% (Me enfoco
+                                en estrategia)</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="test-step" id="step-2">
+                        <span class="step-counter">02 / 10</span>
+                        <h3>Si hoy te ausentas 30 días del negocio sin comunicación...</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 2, 'Colapso total')">La empresa deja de operar o
+                                colapsa</button>
+                            <button onclick="saveAnswer(2, 2, 'Funciona con errores')">Funciona pero con graves
+                                errores</button>
+                            <button onclick="saveAnswer(4, 2, 'Sigue creciendo')">Sigue creciendo y operando
+                                normalmente</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="test-step" id="step-3">
+                        <span class="step-counter">03 / 10</span>
+                        <h3>¿Cuentas con manuales de procesos documentados y actualizados?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 3, 'Sin documentación')">No, todo depende de mi
+                                memoria</button>
+                            <button onclick="saveAnswer(2, 3, 'Documentación parcial/obsoleta')">Existen algunos pero
+                                nadie los usa</button>
+                            <button onclick="saveAnswer(4, 3, 'Documentación total')">Sí, son la base de nuestra
+                                operación diaria</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="test-step" id="step-4">
+                        <span class="step-counter">04 / 10</span>
+                        <h3>¿Cómo obtienes el 80% de tus nuevos clientes?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 4, 'Recomendaciones (Azar)')">Recomendaciones y "boca en
+                                boca" (Azar)</button>
+                            <button onclick="saveAnswer(2, 4, 'Venta manual constante')">Esfuerzos de ventas manuales
+                                constantes</button>
+                            <button onclick="saveAnswer(4, 4, 'Sistema predecible')">Sistema de marketing y ventas
+                                predecible</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="test-step" id="step-5">
+                        <span class="step-counter">05 / 10</span>
+                        <h3>¿Tu equipo tiene autoridad para decidir sin consultarte?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 5, 'Sin autoridad')">No, hasta lo más mínimo requiere mi
+                                firma</button>
+                            <button onclick="saveAnswer(2, 5, 'Autoridad limitada')">Solo en áreas muy
+                                específicas</button>
+                            <button onclick="saveAnswer(4, 5, 'Empoderamiento total')">Sí, están empoderados bajo
+                                procesos claros</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 6 -->
+                    <div class="test-step" id="step-6">
+                        <span class="step-counter">06 / 10</span>
+                        <h3>¿Conoces tu Costo de Adquisición (CAC) y Margen Real por producto?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 6, 'Desconocimiento financiero')">No tengo idea de los
+                                números exactos</button>
+                            <button onclick="saveAnswer(2, 6, 'Noción aproximada')">Tengo una noción general
+                                aproximada</button>
+                            <button onclick="saveAnswer(4, 6, 'Control total de KPIs')">Lo mido y analizo semanalmente
+                                con datos</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 7 -->
+                    <div class="test-step" id="step-7">
+                        <span class="step-counter">07 / 10</span>
+                        <h3>¿Tus herramientas tecnológicas (CRM, ERP, etc.) están integradas?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 7, 'Excels/Papel')">Usamos Excels aislados y papel</button>
+                            <button onclick="saveAnswer(2, 7, 'Software fragmentado')">Tenemos software pero no se
+                                hablan entre sí</button>
+                            <button onclick="saveAnswer(4, 7, 'Sistema integrado')">Todo fluye en un sistema
+                                centralizado</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 8 -->
+                    <div class="test-step" id="step-8">
+                        <span class="step-counter">08 / 10</span>
+                        <h3>¿El equipo conoce sus indicadores clave de desempeño (KPIs)?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 8, 'Sin KPIs')">No, solo vienen a cumplir su horario</button>
+                            <button onclick="saveAnswer(2, 8, 'KPIs conocidos no medidos')">Los conocen pero no se miden
+                                formalmente</button>
+                            <button onclick="saveAnswer(4, 8, 'Cultura de resultados')">Sí, y sus bonos dependen de
+                                resultados</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 9 -->
+                    <div class="test-step" id="step-9">
+                        <span class="step-counter">09 / 10</span>
+                        <h3>¿Puedes duplicar tu cantidad de clientes hoy sin colapsar?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 9, 'Al límite/Sin capacidad')">Imposible, ya estamos al
+                                límite</button>
+                            <button onclick="saveAnswer(2, 9, 'Caos en crecimiento')">Podría, pero con mucho caos y
+                                estrés</button>
+                            <button onclick="saveAnswer(4, 9, 'Estructura escalable')">Sí, nuestra estructura está lista
+                                para escalar</button>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 10 -->
+                    <div class="test-step" id="step-10">
+                        <span class="step-counter">10 / 10</span>
+                        <h3>¿Tu empresa es un activo vendible o depende de tu marca personal?</h3>
+                        <div class="test-options">
+                            <button onclick="saveAnswer(0, 10, 'Auto-empleo')">Si yo me voy, el valor de la empresa es
+                                cero</button>
+                            <button onclick="saveAnswer(2, 10, 'Dependencia parcial')">Tiene valor pero yo soy la cara
+                                principal</button>
+                            <button onclick="saveAnswer(4, 10, 'Activo escalable/vendible')">Es un sistema que funciona
+                                solo, listo para venderse</button>
+                        </div>
+                    </div>
+
+                    <!-- Captación de Datos -->
+                    <div class="test-step" id="step-11">
+                        <h2 class="gold-gradient">Diagnóstico de Ingeniería Finalizado</h2>
+                        <p>Estamos calculando tu <strong>Índice de Escalabilidad</strong>. Introduce tus datos para
+                            enviarte el reporte completo y tus siguientes 3 pasos estratégicos.</p>
+                        <form id="lead-form" onsubmit="finishTest(event)">
+                            <input type="text" placeholder="Tu nombre y apellido" required>
+                            <input type="email" placeholder="Email corporativo (donde recibirás el reporte)" required>
+                            <button type="submit" class="btn-cta-futuristic">Ver mi Puntaje Ahora</button>
+                        </form>
+                    </div>
+
+                    <!-- Resultado Final -->
+                    <div class="test-step" id="step-12">
+                        <div class="result-circle" id="result-score">0%</div>
+                        <h3 id="result-title">Nivel: Operativo</h3>
+                        <p id="result-desc">Cargando diagnóstico...</p>
+                        <button class="btn-cta-secondary" onclick="closeTest()">Regresar a la web</button>
+                    </div>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="test-progress"></div>
+                </div>
             </div>
         </div>
-    </div>
 
         <!-- Section 04: The Method (El Camino Elysium) -->
         <section id="metodo-elysium">
@@ -472,9 +499,11 @@
                         <div class="bento-content">
                             <div class="bento-icon"><i class="fas fa-stethoscope"></i></div>
                             <h3>Gestión de Salud y Clínicas</h3>
-                            <p>Sistemas integrales para clínicas dentales y centros médicos. Automatización de citas, expedientes digitales y control financiero.</p>
+                            <p>Sistemas integrales para clínicas dentales y centros médicos. Automatización de citas,
+                                expedientes digitales y control financiero.</p>
                             <span class="bento-metric">+30% Eficiencia Operativa</span>
-                            <a href="soluciones/salud.html" class="bento-link">Explorar Vertical <i class="fas fa-arrow-right"></i></a>
+                            <a href="soluciones/salud.html" class="bento-link">Explorar Vertical <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -484,8 +513,10 @@
                         <div class="bento-content">
                             <div class="bento-icon"><i class="fas fa-shopping-bag"></i></div>
                             <h3>Retail y Tiendas de Moda</h3>
-                            <p>Control de inventarios inteligentes y administración de puntos de venta orientados a la escalabilidad.</p>
-                            <a href="soluciones/retail.html" class="bento-link">Ver Solución <i class="fas fa-arrow-right"></i></a>
+                            <p>Control de inventarios inteligentes y administración de puntos de venta orientados a la
+                                escalabilidad.</p>
+                            <a href="soluciones/retail.html" class="bento-link">Ver Solución <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -495,8 +526,10 @@
                         <div class="bento-content">
                             <div class="bento-icon"><i class="fas fa-industry"></i></div>
                             <h3>Producción y Alimentos</h3>
-                            <p>Estandarización de procesos productivos para pastelerías y fábricas artesanales. Control de mermas y calidad.</p>
-                            <a href="soluciones/produccion.html" class="bento-link">Ver Solución <i class="fas fa-arrow-right"></i></a>
+                            <p>Estandarización de procesos productivos para pastelerías y fábricas artesanales. Control
+                                de mermas y calidad.</p>
+                            <a href="soluciones/produccion.html" class="bento-link">Ver Solución <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -556,19 +589,19 @@
                         <div class="insight-tag">ESTRATEGIA</div>
                         <h3>Ingeniería Empresarial vs Consultoría Tradicional</h3>
                         <p>Por qué el diseño de sistemas es la única forma real de liberar al dueño de la operación.</p>
-                        <a href="insights/ingenieria-vs-consultoria.html">Leer Artículo <i class="fas fa-chevron-right"></i></a>
+                        <a href="#">Leer Artículo <i class="fas fa-chevron-right"></i></a>
                     </div>
                     <div class="glass-card insight-card reveal">
                         <div class="insight-tag">AUTOMATIZACIÓN</div>
                         <h3>Cómo la IA previene el Burnout en PyMEs</h3>
                         <p>Herramientas prácticas para recuperar tu tiempo personal mientras tu negocio crece.</p>
-                        <a href="insights/ia-burnout-pymes.html">Leer Artículo <i class="fas fa-chevron-right"></i></a>
+                        <a href="#">Leer Artículo <i class="fas fa-chevron-right"></i></a>
                     </div>
                     <div class="glass-card insight-card reveal">
                         <div class="insight-tag">SIX SIGMA</div>
                         <h3>Eficiencia sin perder el toque humano</h3>
                         <p>Aplicando metodologías industriales a negocios de servicios y retail.</p>
-                        <a href="insights/eficiencia-toque-humano.html">Leer Artículo <i class="fas fa-chevron-right"></i></a>
+                        <a href="#">Leer Artículo <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -586,7 +619,7 @@
                 Elysium</h2>
             <p style="color: var(--text-muted); margin-bottom: 50px; max-width: 600px; margin-inline: auto;">Es momento
                 de dejar de operar y comenzar a dirigir. Tu legado merece una arquitectura a la altura de tu visión.</p>
-            <a href="https://wa.me/522203215455?text=Hola,%20quiero%20programar%20mi%20primera%20consultor%C3%ADa%20gratis" target="_blank" class="btn-cta-futuristic brand-font" style="text-decoration: none; display: inline-block;">
+            <a href="#contacto" class="btn-cta-futuristic brand-font">
                 Iniciar Transformación HOY mismo <i class="fas fa-arrow-right"></i>
             </a>
             <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
