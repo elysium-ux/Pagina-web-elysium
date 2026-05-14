@@ -19,13 +19,10 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden !important;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -33,6 +30,12 @@ body {
     font-family: 'Montserrat', sans-serif !important;
     color: #fff;
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    overflow: visible; /* IMPORTANTE: Dejamos que el html mande */
 }
 
 h1,
@@ -688,16 +691,24 @@ nav .container {
     }
 }
 
-/* Reveal Animations */
+/* Reveal Animations Premium */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: var(--transition-smooth);
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity; /* Fuerza uso de GPU */
 }
 
 .reveal.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+}
+
+/* Sphere and Halo Performance */
+#interactive-sphere, .footer-arc, .vision-circle {
+    will-change: transform;
+    transform: translateZ(0); /* Aceleración por hardware */
 }
 
 /* Stagger animation for Metodología Elysium pillars */

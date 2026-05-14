@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Intersection Observer for Revealed Elements
+    // 1. Intersection Observer for Revealed Elements - Optimized Timing
     const revealOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.3, // Requiere que el 30% sea visible
+        rootMargin: "0px 0px -150px 0px" // Retrasa la activación para que sea más centrada
     };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // If it's a stagger container, we don't need to do more, CSS handles children
-                // But for individual reveals:
                 observer.unobserve(entry.target);
             }
         });
@@ -32,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.2,
-        rootMargin: "-100px 0px -100px 0px"
+        threshold: 0.4,
+        rootMargin: "-150px 0px -150px 0px"
     });
 
     const methodologyGrid = document.querySelector('.pilares-grid-observer');
@@ -56,7 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 cards.forEach(card => card.classList.remove('active'));
             }
         });
-    }, { threshold: 0.1 });
+    }, { 
+        threshold: 0.3,
+        rootMargin: "0px 0px -100px 0px"
+    });
 
     const painGrid = document.querySelector('.pain-list-v4');
     if (painGrid) {
@@ -81,50 +82,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Global Futuristic Interaction (V4)
+    // 3. Global Futuristic Interaction (V4) - Optimized for 60fps
     const sphere = document.querySelector('#interactive-sphere');
     const interactiveText = document.querySelector('#interactive-text');
     const glassCards = document.querySelectorAll('.glass-card');
     const scrollRing = document.querySelector('#scrolling-ring');
     const nav = document.querySelector('nav');
 
-    function handleInteractions(e) {
+    let lastScrollY = window.scrollY;
+    let mouseX = 0, mouseY = 0;
+    let ticking = false;
+
+    function updateAnimations() {
         const scrolled = window.scrollY;
-
-        // Mouse Interaction (Global Parallax)
-        if (e && e.type === 'mousemove') {
-            const { clientX, clientY } = e;
-            const { innerWidth, innerHeight } = window;
-
-            const moveX = (clientX - innerWidth / 2) / 30;
-            const moveY = (clientY - innerHeight / 2) / 30;
-
-            // Hero Elements
-            if (sphere) {
-                sphere.style.transform = `translate(${moveX * -1.2}px, ${moveY * -1.2}px) rotate(${moveX * 0.05}deg)`;
-            }
-            if (interactiveText) {
-                interactiveText.style.transform = `translate(${moveX}px, ${moveY}px) rotateX(${moveY * 0.05}deg) rotateY(${moveX * 0.05}deg)`;
-            }
-
-            // Global Glass Cards Parallax
-            glassCards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top < innerHeight && rect.bottom > 0) {
-                    card.style.transform = `translate(${moveX * 0.2}px, ${moveY * 0.2}px)`;
-                }
-            });
-        }
 
         // Scroll Interaction (Ring Rotation & Nav)
         if (scrollRing) {
-            scrollRing.style.transform = `rotate(${scrolled * 0.2}deg) scale(${1 + Math.min(scrolled / 5000, 0.2)})`;
+            scrollRing.style.transform = `rotate(${scrolled * 0.15}deg) scale(${1 + Math.min(scrolled / 5000, 0.1)}) translateZ(0)`;
         }
 
         if (nav) {
             if (scrolled > 50) {
                 nav.style.padding = '15px 0';
-                nav.style.background = 'rgba(0, 0, 0, 0.9)';
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
                 nav.style.borderBottom = '1px solid rgba(0, 242, 255, 0.1)';
             } else {
                 nav.style.padding = '25px 0';
@@ -132,11 +112,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 nav.style.borderBottom = '1px solid transparent';
             }
         }
+
+        // Mouse Parallax (Solo si hay movimiento)
+        const moveX = (mouseX - window.innerWidth / 2) / 40;
+        const moveY = (mouseY - window.innerHeight / 2) / 40;
+
+        if (sphere) {
+            sphere.style.transform = `translate3d(${moveX * -1.5}px, ${moveY * -1.5}px, 0) rotate(${moveX * 0.05}deg)`;
+        }
+        if (interactiveText) {
+            interactiveText.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) rotateX(${moveY * 0.03}deg) rotateY(${moveX * 0.03}deg)`;
+        }
+
+        // Glass Cards Parallax
+        glassCards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                card.style.transform = `translate3d(${moveX * 0.15}px, ${moveY * 0.15}px, 0)`;
+            }
+        });
+
+        ticking = false;
     }
 
-    window.addEventListener('mousemove', handleInteractions);
-    window.addEventListener('scroll', handleInteractions);
-    handleInteractions(); // Initial call
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateAnimations);
+            ticking = true;
+        }
+    }
+
+    function onMouseMove(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!ticking) {
+            requestAnimationFrame(updateAnimations);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateAnimations(); // Initial render
 
     // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
@@ -278,6 +295,48 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (whatsappBtn) {
             whatsappBtn.setAttribute('href', waUrl);
+        }
+    }
+
+    // --- Interactividad del Halo por Giroscopio (Mobile) ---
+    const halo = document.getElementById('interactive-sphere') || document.querySelector('.footer-arc');
+    
+    if (window.DeviceOrientationEvent) {
+        // Para iOS 13+ se requiere permiso explícito
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            document.addEventListener('click', () => {
+                DeviceOrientationEvent.requestPermission()
+                    .then(permissionState => {
+                        if (permissionState === 'granted') {
+                            window.addEventListener('deviceorientation', handleOrientation);
+                        }
+                    })
+                    .catch(console.error);
+            }, { once: true });
+        } else {
+            // Android y navegadores que no requieren permiso explícito
+            window.addEventListener('deviceorientation', handleOrientation);
+        }
+    }
+
+    function handleOrientation(event) {
+        if (!halo) return;
+
+        // beta: inclinación frente/atrás (-180 a 180)
+        // gamma: inclinación izquierda/derecha (-90 a 90)
+        const x = event.gamma; 
+        const y = event.beta; 
+
+        // Suavizamos el movimiento y limitamos el rango
+        const moveX = (x / 20) * 15; // Max 15px de desplazamiento
+        const moveY = ((y - 45) / 20) * 15; // 45 es el ángulo natural de sostener un celular
+
+        if (window.innerWidth <= 991) {
+            if (halo.classList.contains('footer-arc')) {
+                halo.style.transform = `translateX(calc(-50% + ${moveX}px)) translateY(${moveY}px)`;
+            } else {
+                halo.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
         }
     }
 });
