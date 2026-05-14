@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Intersection Observer for Revealed Elements - Optimized Timing
+    // 1. Intersection Observer for Revealed Elements - Pre-emptive Timing
     const revealOptions = {
-        threshold: 0.3, // Requiere que el 30% sea visible
-        rootMargin: "0px 0px -150px 0px" // Retrasa la activación para que sea más centrada
+        threshold: 0.1, // Se activa con solo el 10% visible
+        rootMargin: "0px 0px -80px 0px" // Activación más temprana para evitar huecos negros
     };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.4,
-        rootMargin: "-150px 0px -150px 0px"
+        threshold: 0.15,
+        rootMargin: "0px 0px -80px 0px"
     });
 
     const methodologyGrid = document.querySelector('.pilares-grid-observer');
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { 
-        threshold: 0.3,
-        rootMargin: "0px 0px -100px 0px"
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
     });
 
     const painGrid = document.querySelector('.pain-list-v4');
