@@ -299,44 +299,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Interactividad del Halo por Giroscopio (Mobile) ---
-    const halo = document.getElementById('interactive-sphere') || document.querySelector('.footer-arc');
+    const interactiveElements = document.querySelectorAll('#interactive-sphere, .footer-arc');
     
-    if (window.DeviceOrientationEvent) {
-        // Para iOS 13+ se requiere permiso explícito
-        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-            document.addEventListener('click', () => {
+    function initGyroscope() {
+        if (window.DeviceOrientationEvent) {
+            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
                 DeviceOrientationEvent.requestPermission()
                     .then(permissionState => {
                         if (permissionState === 'granted') {
-                            window.addEventListener('deviceorientation', handleOrientation);
+                            window.addEventListener('deviceorientation', handleOrientation, { passive: true });
                         }
                     })
                     .catch(console.error);
-            }, { once: true });
-        } else {
-            // Android y navegadores que no requieren permiso explícito
-            window.addEventListener('deviceorientation', handleOrientation);
+            } else {
+                window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+            }
         }
     }
 
+    // Activar al primer toque en cualquier parte del documento
+    document.addEventListener('click', initGyroscope, { once: true });
+
     function handleOrientation(event) {
-        if (!halo) return;
+        if (window.innerWidth > 991) return;
 
-        // beta: inclinación frente/atrás (-180 a 180)
-        // gamma: inclinación izquierda/derecha (-90 a 90)
-        const x = event.gamma; 
-        const y = event.beta; 
+        const x = event.gamma; // Izquierda/Derecha
+        const y = event.beta;  // Frente/Atrás
 
-        // Suavizamos el movimiento y limitamos el rango
-        const moveX = (x / 20) * 15; // Max 15px de desplazamiento
-        const moveY = ((y - 45) / 20) * 15; // 45 es el ángulo natural de sostener un celular
+        // Normalización para una sensación fluida
+        const moveX = (x / 20) * 15; 
+        const moveY = ((y - 45) / 20) * 15; 
 
-        if (window.innerWidth <= 991) {
-            if (halo.classList.contains('footer-arc')) {
-                halo.style.transform = `translateX(calc(-50% + ${moveX}px)) translateY(${moveY}px)`;
+        interactiveElements.forEach(el => {
+            if (el.classList.contains('footer-arc')) {
+                el.style.transform = `translateX(calc(-50% + ${moveX}px)) translateY(${moveY}px) translateZ(0)`;
             } else {
-                halo.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                el.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
             }
-        }
+        });
     }
 });
