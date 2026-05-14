@@ -35,7 +35,7 @@
     <meta property="twitter:description" content="Transformamos negocios en sistemas autónomos de alta eficiencia.">
     <meta property="twitter:image" content="assets/logo/Logo 3.0 sin fondo/5.png">
 
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="style.css?v=1.4">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 
@@ -89,7 +89,7 @@
 
 <body>
     <!-- Temporary Version Bubble -->
-    <div class="version-bubble">v1.3</div>
+    <div class="version-bubble">v1.4</div>
 
     <header>
         <nav id="main-nav">
@@ -383,7 +383,7 @@
                         <h3>¿El equipo conoce sus indicadores clave de desempeño (KPIs)?</h3>
                         <div class="test-options">
                             <button onclick="saveAnswer(0, 8, 'Sin KPIs')">No, solo vienen a cumplir su horario</button>
-                            <button onclick="saveAnswer(2, 8, 'KPIs conocidos no medidos')">Los conocen pero no se miden
+                            <button onclick="saveAnswer(2, 8, 'KPIs conocidos no medidos')">Los conocen pero no se mien
                                 formalmente</button>
                             <button onclick="saveAnswer(4, 8, 'Cultura de resultados')">Sí, y sus bonos dependen de
                                 resultados</button>
@@ -424,8 +424,10 @@
                         <p>Estamos calculando tu <strong>Índice de Escalabilidad</strong>. Introduce tus datos para
                             enviarte el reporte completo y tus siguientes 3 pasos estratégicos.</p>
                         <form id="lead-form" onsubmit="finishTest(event)">
-                            <input type="text" placeholder="Tu nombre y apellido" required>
-                            <input type="email" placeholder="Email corporativo (donde recibirás el reporte)" required>
+                            <input type="text" placeholder="Tu nombre y apellido" required maxlength="50"
+                                pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" title="Solo se permiten letras y espacios">
+                            <input type="email" placeholder="Email corporativo (donde recibirás el reporte)" required
+                                maxlength="50">
                             <button type="submit" class="btn-cta-futuristic">Ver mi Puntaje Ahora</button>
                         </form>
                     </div>
@@ -434,8 +436,11 @@
                     <div class="test-step" id="step-12">
                         <div class="result-circle" id="result-score">0%</div>
                         <h3 id="result-title">Nivel: Operativo</h3>
-                        <p id="result-desc">Cargando diagnóstico...</p>
-                        <button class="btn-cta-secondary" onclick="closeTest()">Regresar a la web</button>
+                        <p id="result-desc" style="font-size: 1.1rem; margin-bottom: 30px;">Cargando diagnóstico...</p>
+                        <a href="https://wa.me/522203215455" id="whatsapp-btn" class="btn-cta-futuristic"
+                            target="_blank" style="text-decoration: none; display: inline-block;">
+                            PROGRAMA TU CONSULTORÍA GRATIS <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -589,19 +594,21 @@
                         <div class="insight-tag">ESTRATEGIA</div>
                         <h3>Ingeniería Empresarial vs Consultoría Tradicional</h3>
                         <p>Por qué el diseño de sistemas es la única forma real de liberar al dueño de la operación.</p>
-                        <a href="#">Leer Artículo <i class="fas fa-chevron-right"></i></a>
+                        <a href="insights/ingenieria-vs-consultoria.html">Leer Artículo <i
+                                class="fas fa-chevron-right"></i></a>
                     </div>
                     <div class="glass-card insight-card reveal">
                         <div class="insight-tag">AUTOMATIZACIÓN</div>
                         <h3>Cómo la IA previene el Burnout en PyMEs</h3>
                         <p>Herramientas prácticas para recuperar tu tiempo personal mientras tu negocio crece.</p>
-                        <a href="#">Leer Artículo <i class="fas fa-chevron-right"></i></a>
+                        <a href="insights/ia-burnout-pymes.html">Leer Artículo <i class="fas fa-chevron-right"></i></a>
                     </div>
                     <div class="glass-card insight-card reveal">
                         <div class="insight-tag">SIX SIGMA</div>
                         <h3>Eficiencia sin perder el toque humano</h3>
                         <p>Aplicando metodologías industriales a negocios de servicios y retail.</p>
-                        <a href="#">Leer Artículo <i class="fas fa-chevron-right"></i></a>
+                        <a href="insights/eficiencia-toque-humano.html">Leer Artículo <i
+                                class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -619,7 +626,9 @@
                 Elysium</h2>
             <p style="color: var(--text-muted); margin-bottom: 50px; max-width: 600px; margin-inline: auto;">Es momento
                 de dejar de operar y comenzar a dirigir. Tu legado merece una arquitectura a la altura de tu visión.</p>
-            <a href="#contacto" class="btn-cta-futuristic brand-font">
+            <a href="https://wa.me/522203215455?text=Hola,%20quiero%20programar%20mi%20primera%20consultor%C3%ADa%20gratis"
+                target="_blank" class="btn-cta-futuristic brand-font"
+                style="text-decoration: none; display: inline-block;">
                 Iniciar Transformación HOY mismo <i class="fas fa-arrow-right"></i>
             </a>
             <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
