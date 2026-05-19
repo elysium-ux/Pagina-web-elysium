@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysium | Contacto y Ubicaciones</title>
+    <link rel="icon" type="image/png" href="assets/logo/Logo%20circulo%20Elysium.png">
+    <meta name="description" content="Conecta con el equipo de Elysium. Oficinas en Puebla, CDMX y Xalapa. Reserva tu primera sesión de consultoría totalmente gratis.">
+    <link rel="stylesheet" href="style.css?v=1.4">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .nav-back {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            z-index: 1000;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.05);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-back:hover {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+        @media (max-width: 991px) {
+            .nav-back { top: 80px; left: 20px; }
+        }
+
+        /* Layout Grid */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            margin-top: 50px;
+            align-items: start;
+        }
+
+        @media (max-width: 991px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Locations Grid */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Office Glass Card */
+        .office-card {
+            padding: 30px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+        }
+
+        .office-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 10%, rgba(0, 242, 255, 0.06) 0%, transparent 60%);
+            opacity: 0.5;
+            transition: 0.5s;
+        }
+
+        .office-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .office-card:hover::before {
+            opacity: 1;
+            background: radial-gradient(circle at 10% 10%, rgba(0, 242, 255, 0.12) 0%, transparent 65%);
+        }
+
+        .office-icon {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.3));
+        }
+
+        .office-name {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #fff;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .office-address {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+            border-bottom: 1px dashed rgba(0, 242, 255, 0.3);
+            width: fit-content;
+            padding-bottom: 2px;
+        }
+
+        .btn-maps:hover {
+            color: #fff;
+            border-color: #fff;
+            gap: 12px;
+        }
+
+        /* Next Opening Card */
+        .next-opening-card {
+            border-color: rgba(224, 200, 156, 0.15);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, rgba(224, 200, 156, 0.01) 100%);
+        }
+
+        .next-opening-card::before {
+            background: radial-gradient(circle at 10% 10%, rgba(224, 200, 156, 0.05) 0%, transparent 60%);
+        }
+
+        .next-opening-card:hover {
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(224, 200, 156, 0.1);
+        }
+
+        .next-opening-card .office-icon {
+            color: var(--primary-gold);
+            filter: drop-shadow(0 0 8px rgba(224, 200, 156, 0.3));
+        }
+
+        .tag-soon {
+            display: inline-block;
+            background: rgba(224, 200, 156, 0.1);
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            width: fit-content;
+            margin-top: 15px;
+        }
+
+        /* Contact Details & Giant CTA */
+        .cta-glass-box {
+            padding: 45px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(0,242,255,0.02) 100%);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 6px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            text-align: center;
+        }
+
+        .cta-glass-box::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, var(--primary-blue), transparent, var(--primary-purple));
+            border-radius: 6px;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .cta-glass-box h2 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+            letter-spacing: -0.5px;
+            font-weight: 700;
+        }
+
+        .cta-glass-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .phone-display {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .phone-display span {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* Pulse Button */
+        .btn-whatsapp-massive {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #25d366;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            animation: pulse-green 2s infinite;
+        }
+
+        .btn-whatsapp-massive:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+            background: #20ba5a;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="main-nav" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="container">
+            <div class="logo-nav">
+                <a href="index.html"><img src="assets/logo/Logo 3.0 sin fondo/5.png" alt="Elysium Logo" style="height: 120px; top: 50%;"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#soluciones">Soluciones</a></li>
+                <li><a href="contacto.html" class="btn btn-gold" style="padding: 10px 25px; border-radius: 0; font-size: 0.7rem; border: 1px solid var(--primary-gold);">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Volver a Inicio</a>
+
+    <main style="padding-top: 60px;">
+        <section style="border-bottom: none; padding-bottom: 100px;">
+            <div class="container">
+                <div style="margin-bottom: 50px; text-align: left;">
+                    <span style="color: var(--primary-blue); font-size: 0.75rem; letter-spacing: 4px; font-weight: 800;">COMUNÍCATE CON NOSOTROS</span>
+                    <h1 style="font-size: 3.5rem; margin-top: 20px; line-height: 1.1; letter-spacing: -1px;">OFICINAS Y CENTROS OPERATIVOS</h1>
+                </div>
+
+                <div class="contact-layout">
+                    <!-- Ubicaciones -->
+                    <div>
+                        <div class="locations-grid">
+                            <!-- Puebla -->
+                            <div class="office-card">
+                                <div>
+                                    <div class="office-icon"><i class="fas fa-location-dot"></i></div>
+                                    <div class="office-name">Puebla</div>
+                                    <div class="office-address">Mártires del 2 de Octubre, Anzures, 72530 Heroica Puebla de Zaragoza, Pue.</div>
+                                </div>
+                                <a href="https://maps.app.goo.gl/9QNr6eKdC6Rrtq1t7" target="_blank" class="btn-maps">Ver en Google Maps <i class="fas fa-arrow-up-right-from-square"></i></a>
+                            </div>
+
+                            <!-- CDMX -->
+                            <div class="office-card">
+                                <div>
+                                    <div class="office-icon"><i class="fas fa-location-dot"></i></div>
+                                    <div class="office-name">CDMX</div>
+                                    <div class="office-address">Priv. Andes, Los Alpes, Álvaro Obregón, 01010 Ciudad de México, CDMX</div>
+                                </div>
+                                <a href="https://maps.app.goo.gl/Hv8W5GmsPhpT3UyE9" target="_blank" class="btn-maps">Ver en Google Maps <i class="fas fa-arrow-up-right-from-square"></i></a>
+                            </div>
+
+                            <!-- Xalapa -->
+                            <div class="office-card">
+                                <div>
+                                    <div class="office-icon"><i class="fas fa-location-dot"></i></div>
+                                    <div class="office-name">Xalapa</div>
+                                    <div class="office-address">Av. Américas, Maria Esther, 91033 Xalapa-Enríquez, Ver.</div>
+                                </div>
+                                <a href="https://maps.app.goo.gl/AzKdX9xPz2ARxi5P6" target="_blank" class="btn-maps">Ver en Google Maps <i class="fas fa-arrow-up-right-from-square"></i></a>
+                            </div>
+
+                            <!-- Querétaro -->
+                            <div class="office-card next-opening-card">
+                                <div>
+                                    <div class="office-icon"><i class="fas fa-hourglass-half"></i></div>
+                                    <div class="office-name">Querétaro</div>
+                                    <div class="office-address">Próxima apertura de centro de consultoría corporativa.</div>
+                                </div>
+                                <span class="tag-soon">Próximamente</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gran CTA -->
+                    <div class="cta-glass-box">
+                        <div class="office-icon" style="margin-inline: auto;"><i class="fas fa-calendar-check"></i></div>
+                        <h2>tu primera sesión de consultoría totalmente GRATIS</h2>
+                        <p>Agenda una sesión estratégica uno a uno de 45 minutos con nuestros ingenieros de procesos. Analizaremos tu operación y trazaremos un mapa de ruta personalizado para tu negocio.</p>
+                        
+                        <div class="phone-display">
+                            <i class="fab fa-whatsapp"></i> WhatsApp: <span>221 248 7178</span>
+                        </div>
+
+                        <a href="https://wa.me/522212487178?text=Hola,%20quiero%20programar%20mi%20primera%20consultor%C3%ADa%20gratis" target="_blank" class="btn-whatsapp-massive">
+                            AGENDAR SESIÓN GRATIS <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 50px 0; background: #000; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <p style="font-size: 0.75rem; color: #444; letter-spacing: 2px;">© 2026 ELYSIUM INGENIERÍA EMPRESARIAL. TODOS LOS DERECHOS RESERVADOS.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

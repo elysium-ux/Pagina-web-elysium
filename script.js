@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Forzar actualización de URL de WhatsApp
         const mensaje = `Hola, soy ${nombre} y mi empresa tiene una calificación de ${finalScore}% en escalabilidad y me gustaría programar una consultoría GRATIS, por favor.`;
-        const waUrl = `https://wa.me/522203215455?text=${encodeURIComponent(mensaje)}`;
+        const waUrl = `https://wa.me/522212487178?text=${encodeURIComponent(mensaje)}`;
         
         if (whatsappBtn) {
             whatsappBtn.setAttribute('href', waUrl);

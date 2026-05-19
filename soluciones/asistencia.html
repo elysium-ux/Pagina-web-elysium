@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysium | Control de Asistencia y Nómina</title>
+    <link rel="icon" type="image/png" href="../assets/logo/Logo%20circulo%20Elysium.png">
+    <meta name="description" content="Automatiza el registro de asistencia, incidencias y prenómina de tu personal. Ingeniería de procesos para la gestión eficiente del capital humano.">
+    <link rel="stylesheet" href="../style.css?v=1.4">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <nav id="main-nav" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="container">
+            <div class="logo-nav">
+                <a href="../index.html"><img src="../assets/logo/Logo 3.0 sin fondo/5.png" alt="Elysium Logo" style="height: 120px; top: 50%;"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#soluciones">Otras Soluciones</a></li>
+                <li><a href="../contacto.html" class="btn btn-gold">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <style>
+        .nav-back {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            z-index: 1000;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.05);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-back:hover {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+        @media (max-width: 991px) {
+            .nav-back { top: 80px; left: 20px; }
+        }
+
+        /* Premium feature card styles */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .feature-card {
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 10%, rgba(0, 242, 255, 0.08) 0%, transparent 60%);
+            opacity: 0.5;
+            transition: 0.5s;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+            background: radial-gradient(circle at 10% 10%, rgba(0, 242, 255, 0.15) 0%, transparent 65%);
+        }
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.4));
+        }
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+        .feature-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        .metric-card {
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(0,242,255,0.02) 100%);
+            border: 1px solid rgba(0, 242, 255, 0.15);
+            border-radius: 6px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+        .metric-card::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, var(--primary-blue), transparent, var(--primary-purple));
+            border-radius: 6px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+    </style>
+
+    <a href="../index.html#soluciones" class="nav-back"><i class="fas fa-arrow-left"></i> Volver a Elysium</a>
+
+    <main style="padding-top: 60px;">
+        <section style="border-bottom: none; padding-bottom: 50px;">
+            <div class="container">
+                <div style="margin-bottom: 50px; text-align: left;">
+                    <span style="color: var(--primary-blue); font-size: 0.75rem; letter-spacing: 4px; font-weight: 800;">VERTICAL: CAPITAL HUMANO</span>
+                    <h1 style="font-size: 3.5rem; margin-top: 20px; line-height: 1.1; letter-spacing: -1px;">GESTIÓN DE ASISTENCIA Y NÓMINA DE PRECISIÓN MILITAR</h1>
+                </div>
+                
+                <div class="philosophy-grid" style="align-items: center; gap: 50px;">
+                    <div class="philosophy-content">
+                        <p style="font-size: 1.25rem; color: #fff; line-height: 1.5; font-weight: 300;">El activo más valioso de tu empresa es el tiempo de tu equipo. Sustituimos los procesos propensos a errores y el papeleo por un <strong>ecosistema digital robusto</strong> de control y prenómina.</p>
+                        <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.95rem;">Diseñamos e implementamos sistemas personalizados de seguimiento que conectan la actividad real de tu plantilla con tu departamento de finanzas de manera automatizada y transparente.</p>
+                        
+                        <ul style="margin-top: 35px; list-style: none; color: var(--text-muted);">
+                            <li style="margin-bottom: 18px; display: flex; align-items: center; gap: 15px; font-size: 0.95rem;">
+                                <i class="fas fa-check-circle" style="color: var(--primary-blue); font-size: 1.2rem;"></i> 
+                                <span>Eliminación del robo de tiempo y registros duplicados.</span>
+                            </li>
+                            <li style="margin-bottom: 18px; display: flex; align-items: center; gap: 15px; font-size: 0.95rem;">
+                                <i class="fas fa-check-circle" style="color: var(--primary-blue); font-size: 1.2rem;"></i> 
+                                <span>Cálculo preciso de tiempo extra y horas nocturnas automáticas.</span>
+                            </li>
+                            <li style="margin-bottom: 18px; display: flex; align-items: center; gap: 15px; font-size: 0.95rem;">
+                                <i class="fas fa-check-circle" style="color: var(--primary-blue); font-size: 1.2rem;"></i> 
+                                <span>Exportación limpia y directa a sistemas contables líderes.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h3 style="margin-bottom: 25px; font-size: 1.3rem; letter-spacing: 2px; color: #fff;">Impacto Mensurable</h3>
+                        <div class="bento-metric" style="font-size: 2.2rem; margin-bottom: 15px;">-80% Tiempo de Cálculo</div>
+                        <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 30px; line-height: 1.4;">Reducción drástica de horas invertidas en conciliar retardos, incidencias y cálculos de nómina al cierre del ciclo.</p>
+                        <div class="bento-metric" style="font-size: 2.2rem; margin-bottom: 15px;">-15% Fugas de Capital</div>
+                        <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.4; margin: 0;">Optimización de presupuestos mediante el control estricto de horas extra y la eliminación de discrepancias en asistencia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion Novedosa: Módulos del Sistema -->
+        <section style="background: rgba(255, 255, 255, 0.01); padding-top: 80px; padding-bottom: 100px;">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <h2 style="font-size: 2.2rem; letter-spacing: 2px;">ARQUITECTURA DEL SISTEMA</h2>
+                    <p style="color: var(--primary-blue); font-size: 0.8rem; letter-spacing: 3px; margin-top: 10px; text-transform: uppercase;">Módulos clave diseñados a tu medida</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-fingerprint"></i></div>
+                        <h3>Identidad Biométrica</h3>
+                        <p>Validación avanzada mediante reconocimiento facial 3D, huella dactilar o credenciales dinámicas encriptadas para asegurar la autenticidad total del registro.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-calculator"></i></div>
+                        <h3>Motor de Reglas y Turnos</h3>
+                        <p>Gestión flexible de múltiples turnos, rotaciones complejas, periodos de tolerancia personalizados e incidencias especiales con cálculo inmediato.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Prenómina Automatizada</h3>
+                        <p>Consolidación en un clic de todas las incidencias del periodo, lista para auditar y exportar a tu software contable sin conversiones manuales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 50px 0; background: #000; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <p style="font-size: 0.75rem; color: #444; letter-spacing: 2px;">© 2026 ELYSIUM INGENIERÍA EMPRESARIAL. TODOS LOS DERECHOS RESERVADOS.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
